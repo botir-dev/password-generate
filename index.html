@@ -1,39 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style.css" />
     <title>Password generator</title>
   </head>
   <body>
     <!-- Container form -->
-    <div>
-      <div>
-        <form>
+    <div class="main-container">
+      <p class="main-title">Password Generator</p>
+
+      <div class="title-container">
+        <form class="formm">
           <span id="passwordSpan">Password</span>
-          <button type="button" id="btn">Copy</button>
+          <button type="button" class="copy-button" id="btn">
+            <img src="./images/Shape.svg" alt="" />
+          </button>
         </form>
       </div>
 
-      <div>
-        <div>
-          <span>Character length</span>
+      <div class="second-container">
+        <div class="second-content">
+          <span class="second-title">Character length</span>
           <span id="characterLength">4</span>
         </div>
-        <form id="form">
-          <input type="range" value="4" min="4" max="20" id="range" /> <br />
+        <form id="form" class="second-form">
+          <input
+            type="range"
+            class="rangeInput"
+            value="4"
+            min="4"
+            max="20"
+            id="range"
+          />
+          <br />
 
-          <input type="checkbox" id="UpperCase" name="upperCase" />
-          <span>UpperCase</span> <br />
-          <input type="checkbox" id="LowerCase" name="lowerCase" />
-          <span>LowerCase</span> <br />
-          <input type="checkbox" id="Numbers" name="numbers" />
-          <span>Numbers</span> <br />
-          <input type="checkbox" id="Symbols" name="symbols" />
-          <span>Symbols</span> <br />
+          <div class="check-cont">
+            <span class="input-container">
+              <input
+                type="checkbox"
+                class="itemInput"
+                id="UpperCase"
+                name="upperCase"
+              />
+              <span class="itemText">Include Uppercase Letters</span> <br />
+            </span>
+            <span class="input-container">
+              <input
+                type="checkbox"
+                class="itemInput"
+                id="LowerCase"
+                name="lowerCase"
+              />
+              <span class="itemText">Include Lowercase Letters</span> <br />
+            </span>
+            <span class="input-container">
+              <input
+                type="checkbox"
+                class="itemInput"
+                id="Numbers"
+                name="numbers"
+              />
+              <span class="itemText">Include Numbers</span> <br />
+            </span>
+            <span class="input-container">
+              <input
+                type="checkbox"
+                class="itemInput"
+                id="Symbols"
+                name="symbols"
+              />
+              <span class="itemText">Include Symbols</span> <br />
+            </span>
+          </div>
 
-          <button id="generate">Generate</button>
+          <button class="generate-button" id="generate">GENERATE</button>
         </form>
       </div>
     </div>

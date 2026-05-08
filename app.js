@@ -6,13 +6,12 @@ const generateBtn = document.getElementById("generate");
 const Form = document.getElementById("form");
 const RangeInput = document.getElementById("range");
 const CharacterLength = document.getElementById("characterLength");
-const passwordSpan = document.getElementById("passwordSpan")
+const passwordSpan = document.getElementById("passwordSpan");
 const Copy = document.getElementById("btn");
 
 Copy.addEventListener("click", () => {
   navigator.clipboard.writeText(passwordSpan.textContent);
 });
-
 
 let arr = [];
 let password = [];
@@ -24,7 +23,7 @@ let lenObj = {
   upperCase: 0,
   lowerCase: 0,
   numbers: 0,
-}
+};
 
 const allowed = [
   ...Array.from({ length: 47 - 32 + 1 }, (_, i) => 32 + i), // 32-47
@@ -35,25 +34,25 @@ const allowed = [
 
 const funcObj = {
   upperCase: (val) => {
-    for(let i = 0; i < val; i++){
+    for (let i = 0; i < val; i++) {
       let result = Math.floor(Math.random() * (90 - 65 + 1)) + 65;
       password.push(String.fromCharCode(result));
     }
   },
   lowerCase: (val) => {
-    for(let i = 0; i < val; i++){
+    for (let i = 0; i < val; i++) {
       let result = Math.floor(Math.random() * (122 - 97 + 1)) + 97;
       password.push(String.fromCharCode(result));
     }
   },
   numbers: (val) => {
-    for(let i = 0; i < val; i++){
+    for (let i = 0; i < val; i++) {
       let result = Math.floor(Math.random() * 10);
       password.push(result);
     }
   },
   symbols: (val) => {
-    for(let i = 0; i < val; i++){
+    for (let i = 0; i < val; i++) {
       const randomIndex = Math.floor(Math.random() * allowed.length);
       let result = allowed[randomIndex];
       password.push(String.fromCharCode(result));
@@ -68,9 +67,8 @@ function FunctionForArray(arr) {
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
   let str = arr.join("");
-  passwordSpan.innerText = str; 
+  passwordSpan.innerText = str;
 }
-
 
 RangeInput.addEventListener("input", (e) => {
   CharacterLength.textContent = e.target.value;
@@ -88,22 +86,22 @@ Form.addEventListener("submit", (e) => {
   if (formData.get("numbers")) valuesName.push("numbers");
   if (formData.get("symbols")) valuesName.push("symbols");
 
-  let total = Math.floor(passLength / valuesName.length)
-  let remainder = passLength % valuesName.length
+  let total = Math.floor(passLength / valuesName.length);
+  let remainder = passLength % valuesName.length;
 
   valuesName.forEach((key) => {
-    lenObj[key] = total
-  })
+    lenObj[key] = total;
+  });
 
-  while(remainder > 0) {
-    const randomKey = valuesName[Math.floor(Math.random() * valuesName.length)]
+  while (remainder > 0) {
+    const randomKey = valuesName[Math.floor(Math.random() * valuesName.length)];
     lenObj[randomKey] += 1;
     remainder--;
   }
-  
+
   valuesName.forEach((key) => {
-    funcObj[key](lenObj[key])
-  })
+    funcObj[key](lenObj[key]);
+  });
 
   FunctionForArray(password);
 });
